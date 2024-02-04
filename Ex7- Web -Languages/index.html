@@ -1,1 +1,45 @@
 
+<!--To enter number --> 
+<input type="text" id="txt-price" placeholder="Enter the price of the item">
+
+<!--To enter number --> 
+<input type="text" id="txt-quantity" placeholder="Enter the quanity of the item">
+
+<!--button for calculation --> 
+<button id="btn-submit">Calculate</button>
+
+<!--Display output of Calculation--> 
+<div id="output"></div>
+
+<script>
+
+    // Retrieving the input elements from documents 
+  var priceInput = document.getElementById('txt-price');
+  var quantityInput = document.getElementById('txt-quantity');
+  var submitBtn = document.getElementById('btn-submit');
+  var output = document.getElementById('output');
+
+  //Add event listener 
+  submitBtn.addEventListener('click', function () {
+
+//Retrieve Values
+    var price = priceInput.value;
+    var quanity = quantityInput.value;
+    price = +price;
+    quanity = +quanity;
+
+    //Check if values are valid
+    if (Number.isNaN(price) || Number.isNaN(quanity)) {
+      output.innerHTML = 'Invalid input';
+      return;
+    }
+//Calculate total price by multiply price and quantity
+    var totalPrice = price * quanity;
+
+    //round price
+    totalPrice = Math.round(totalPrice * 100) / 100;
+
+//Display result 
+    output.innerHTML = quanity + ' items at $' + price + ' each is $' + totalPrice;
+  });
+</script>
